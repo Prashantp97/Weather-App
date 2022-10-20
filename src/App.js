@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./App.css";
 import { ThermometerHalf, Moisture, Wind, Cloud } from "react-bootstrap-icons";
 
-const api = {
-  key: "4a8fa398437e54ca5a250cf4bafe3816",
-  url: "http://api.weatherstack.com/current?access_key=",
-};
+// const api = {
+//   key: "4a8fa398437e54ca5a250cf4bafe3816",
+//   url: "http://api.weatherstack.com/current?access_key=",
+// };
 
 function App() {
   const [search, setSearch] = useState(""); // this is for Search
@@ -14,7 +14,11 @@ function App() {
   const handleSearch = (e) => {
     e.preventDefault();
     if (search) {
-      fetch(`${api.url}${api.key}&query=${search}`) //fetching the API
+      fetch(
+        "http://api.weatherstack.com/current?access_key=4a8fa398437e54ca5a250cf4bafe3816&query=" +
+          search +
+          ""
+      ) //fetching the API
         .then((resp) => resp.json())
         .then((result) => {
           setWeather(result); //store in weather
